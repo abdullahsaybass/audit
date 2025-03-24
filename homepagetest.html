@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auditor Website</title>
+    <style>
+        /* General styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            padding: 18px 50px;
+            border-bottom: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar .logo img {
+            height: 40px;
+        }
+
+        .navbar .menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar .menu li {
+            margin-right: 15px;
+        }
+
+        .navbar .menu li a {
+            text-decoration: none;
+            color: #0e2b4f;
+            padding: 10px 20px;
+            border-radius: 100px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: background-color 0.3s;
+        }
+
+        .navbar .menu li a:hover {
+            background-color: #0e2b4f;
+            color: white;
+        }
+
+        .navbar .login button {
+            margin-left: auto;
+            text-align: right;
+            padding: 12px 21px;
+            background-color: white;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        /* Hero Section */
+        .hero-container {
+            position: relative;
+            width: 100%;
+            max-width: 1500px;
+            margin: auto;
+        }
+
+        .hero-container .hero-image {
+            width: 100%; /* Ensures the image spans the full width */
+            height: auto; /* Maintains aspect ratio */
+        }
+
+        .hero-container .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-container .hero-text {
+    position: absolute;
+    top: 40%;
+    left: 2%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: bold;
+    text-align: left;
+    animation: fadeIn 2s; /* Add fading animation */
+}
+
+.hero-container .hero-text span {
+    font-size: 100px; /* Bigger font size for "Solution" */
+    display: block;
+    margin-top: 30%;
+}
+
+.hero-container .hero-text small {
+    font-size: 20px; /* Adjust font size for the paragraph */
+    margin-top: 10px;
+    display: block;
+}
+
+.hero-container .book_button {
+    margin-top: 20px;
+}
+
+.hero-container .book_button button {
+    background-color: #007BFF;
+    color: white;
+    font-size: 18px;
+    padding: 17px 30px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-left: 30%;
+    margin-top: 56px;
+    margin-bottom: 0%;
+}
+
+.hero-container .book_button button:hover {
+    opacity: 95%;
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Fading animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+        /* Services Section */
+        .services-section {
+            margin: 50px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .service-card {
+            width: 300px;
+            margin: 20px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .service-card .description {
+            padding: 20px;
+        }
+
+        .service-card button {
+            background-color: rgb(3, 36, 103);
+            color: white;
+            padding: 10px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .service-card button:hover {
+            background-color: white;
+            color: rgb(3, 36, 103);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #000b26;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .footer .menu {
+            margin-bottom: 10px;
+        }
+
+        .footer .menu a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 14px;
+        }
+
+        .footer .menu a:hover {
+            text-decoration: underline;
+        }
+
+        .footer .contact,
+        .footer .social-icons,
+        .footer .copyright {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .language-bar {
+            background-color: #2d9cdb;
+            color: white;
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        .language-bar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        .language-bar a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+        </div>
+        <ul class="menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="login">
+            <button>Log In</button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero-container">
+        <img src="gst-img.jpg" alt="GST Solution" class="hero-image">
+        <div class="overlay"></div>
+        <div class="hero-text">
+            <span>SOLUTION</span> <!-- "Solution" text will now be bigger -->
+            <small>Your Trusted Partner in Taxation Solutions<br>
+                Expert Guidance for Every GST Concern<br>
+                Simplifying Compliance, Enhancing Confidence
+            </small>
+            <div class="book_button">
+                <button>Book Now &rarr;
+                </button> <!-- Redesigned and more professional -->
+            </div>
+        </div>        
+    </div>
+
+    <!-- Services Section -->
+    <div class="services-section">
+        <div class="service-card">
+            <img src="customs-clearance.jpg" alt="Customs Clearance">
+            <div class="description">
+                <h2>Customs Clearance</h2>
+                <p>We provide affordable solutions for express, consolidated, and regular types of cargo services.</p>
+                <button>Enquire Now</button>
+            </div>
+        </div>
+        <div class="service-card">
+            <img src="air-freight.jpg" alt="Air Freight">
+            <div class="description">
+                <h2>Air Freight</h2>
+                <p>Our experienced team pays attention to details and ensures that customs clearance is hassle-free.</p>
+                <button>Enquire Now</button>
+            </div>
+        </div>
+        <div class="service-card">
+            <img src="sea-freight.jpg" alt="Sea Freight">
+            <div class="description">
+                <h2>Sea Freight</h2>
+                <p>We provide our clients with time-saving, economical solutions at extremely affordable rates.</p>
+                <button>Enquire Now</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer style="background-color: #333; color: #fff; font-family: Arial, sans-serif; padding: 20px 0;">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+            <div style="flex: 1; text-align: center; margin-bottom: 10px;">
+                <h4 style="margin: 0; font-size: 18px;">Quick Links</h4>
+                <ul style="list-style: none; padding: 0; margin: 10px 0;">
+                    <li><a href="#" style="color: #fff; text-decoration: none;">Home</a></li>
+                    <li><a href="#" style="color: #fff; text-decoration: none;">Services</a></li>
+                    <li><a href="#" style="color: #fff; text-decoration: none;">Gallery</a></li>
+                    <li><a href="#" style="color: #fff; text-decoration: none;">About Us</a></li>
+                </ul>
+            </div>
+            <div style="flex: 1; text-align: center; margin-bottom: 10px;">
+                <h4 style="margin: 0; font-size: 18px;">Contact Us</h4>
+                <p style="margin: 10px 0;">+91-8888888888<br>Zahoor@kzassociate.com</p>
+                <p>Main Office: Perimet, Chennai<br>Branch Office: Ambur</p>
+            </div>
+            <div style="flex: 1; text-align: center;">
+                <p style="margin: 0;">© 2024 - 2025 GSTAudit Ltd. All Rights Reserved.</p>
+            </div>
+        </div>
+      </footer>
+      
+</body>
+</html>

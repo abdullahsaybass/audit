@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Auditor &amp; Access Privilege Website</title>
+  <style>
+    /* --------------------------
+       Global & Base Styling
+    --------------------------- */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: white;
+      color: #333;
+    }
+
+    /* --------------------------
+       Navigation Bar (Common)
+    --------------------------- */
+    .navbar {
+      display: flex;
+      align-items: center;
+      background-color: #fff;
+      justify-content: space-between;
+      padding: 18px 50px;
+      border-bottom: 1px solid #ddd;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar .logo img {
+      height: 40px;
+      margin-left: 60%;
+    }
+
+    .navbar .menu {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      gap: 25px;
+      padding: 0;
+    }
+    .navbar .menu li a {
+      text-decoration: none;
+      color: black;
+      /* padding: 10px 20px; */
+      border-radius: 100px;
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: background-color 0.3s;
+    }
+
+    .navbar .menu li a:hover {
+     color: #1a73e8;
+    }
+
+    .navbar .login button {
+      margin-left: auto;
+      padding: 12px 21px;
+      background-color: white;
+      border-radius: 5px;
+      font-size: 18px;
+    }
+    .navbar .login button:hover{
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    /* --------------------------
+       Auditor Website - Hero Section
+    --------------------------- */
+
+
+  .hero-container {
+    width: 90%;
+    margin: 0 auto;
+  padding: 60px 20px; /* Add padding for spacing */
+  background-color: white; /* Optional: Add a background color */
+}
+
+.hero-container .hero-text {
+  flex: 1; /* Allow text to take up space */
+  
+  display: flex; 
+  justify-content: space-between;
+}
+
+.hero-container .hero-text span {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 130px;
+  font-weight: 700;
+  color: black;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.hero-container .hero-text small {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  color: #555;
+  display: block;
+  margin-bottom: 20px;
+}
+
+    .hero-container .book_button {
+      margin-top: 1%;
+      margin-right: 59%;
+
+    }
+
+    .hero-container .book_button button {
+      background-color: black;
+      color: white;
+      font-size: 18px;
+      padding: 17px 30px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .hero-container .book_button button:hover {
+      opacity: 0.95;
+      transform: scale(1.1);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    }
+    .hero-container .gif{
+      align-items: center;
+    }
+
+    /* FadeUp Animation: the text starts 30px lower than the final position */
+    @keyframes fadeUp {
+      from {
+        transform: translateY(calc(-50% + 30px));
+        opacity: 0;
+      }
+      to {
+        transform: translateY(-50%);
+        opacity: 1;
+      }
+    }
+
+    /* --------------------------
+       Auditor Website - Services Section
+    --------------------------- */
+    .services-section {
+      margin: 50px 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .service-card {
+      width: 300px;
+      margin: 20px;
+      text-align: center;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      background-color: #fff;
+    }
+
+    .service-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .service-card .description {
+      padding: 20px;
+    }
+
+    .service-card button {
+      background-color: black;
+      color: white;
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .service-card button:hover {
+      background-color: rgba(0, 0, 0, 0.8);      
+    }
+
+    /* --------------------------
+       Privileged Access (PAM360) Section
+    --------------------------- */
+    .pam360-section {
+      background-color: #fff;
+      padding: 60px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .pam360-hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      max-width: 1200px;
+      flex-wrap: wrap;
+    }
+
+    .pam360-hero-left {
+      flex: 1;
+      padding-right: 20px;
+      min-width: 280px;
+    }
+
+    .pam360-hero-left h1 {
+      font-size: 42px;
+      color: #0072C6;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .pam360-hero-left p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      color: #555;
+    }
+
+    .pam360-cta-btn {
+      background-color: #0072C6;
+      color: #fff;
+      border: none;
+      padding: 15px 25px;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .pam360-cta-btn:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .pam360-hero-right {
+      flex: 0 0 400px;
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      min-width: 280px;
+      margin-top: 30px;
+    }
+
+    .pam360-hero-right h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: black;
+    }
+
+    .pam360-hero-right form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pam360-hero-right form input,
+    .pam360-hero-right form select {
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    .pam360-hero-right form input:focus,
+    .pam360-hero-right form select:focus {
+      outline: none;
+      border-color: #0072C6;
+    }
+
+    .pam360-hero-right form button {
+      background-color: black;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .pam360-hero-right form button:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .pam360-privacy {
+      font-size: 12px;
+      color: #777;
+      margin-top: 10px;
+    }
+
+    /* Logos within PAM360 Section */
+    .pam360-logos {
+      background: #fff;
+      padding: 40px 20px;
+      text-align: center;
+      width: 100%;
+      margin: 20px 0;
+    }
+
+    .pam360-logos p {
+      margin-bottom: 20px;
+      font-size: 18px;
+      color: #555;
+    }
+
+    .logo-images {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo-images img {
+      max-width: 120px;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+
+    .logo-images img:hover {
+      opacity: 1;
+    }
+
+    /* Fixed Notifications (Optional for PAM360) */
+    .notification-left,
+    .notification-right {
+      position: fixed;
+      bottom: 10px;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .notification-left {
+      left: 10px;
+    }
+
+    .notification-right {
+      right: 10px;
+    }
+    .hero-container .hero-image {
+  display: none;
+}
+
+
+    
+
+    .language-bar {
+      background-color: #2d9cdb;
+      color: white;
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    .language-bar a {
+      color: white;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+
+    .language-bar a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+      
+    }
+    
+    .header h1 {
+      font-size: 3em;
+      color: black;
+    }
+  
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    
+    .card {
+      background: #fff;
+      width: 220px;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+    
+    .card h2 {
+      font-size: 1.4em;
+      margin-bottom: 10px;
+      color: #555;
+    }
+    
+    .card .number {
+      font-size: 2.8em;
+      font-weight: bold;
+      color: #1a73e8;
+      margin-bottom: 10px;
+    }
+    
+    .card p {
+      font-size: 0.95em;
+      color: #777;
+    }
+    .subscription-container {
+      display: flex;
+      flex-wrap: wrap;
+      color: black;
+      width: 80%;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: whitesmoke;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    .features,
+    .plan {
+      padding: 10px;
+      flex: 1;
+      text-align: center;
+      margin: 10px; /* Adding space between the boxes */
+    }
+    .features {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .plan {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color:white ;
+      color: black;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .price {
+      font-size: 2em;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .plan.selected {
+      background-color:white;
+      color:black;
+    }
+    .plan.selected button {
+      background-color: #1a73e8;
+      color:#ffffff;
+    }
+    .plan.selected button :hover {
+      background-color: #1a73e8;
+      color:#ffffff;
+    }
+    .plan button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      background-color:#1a73e8 ;
+      color: white;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .plan button :hover{
+      background-color: black;
+    }
+    @media (max-width: 480px) {
+      .subscription-container {
+        justify-content: left;
+        width: 800px;
+        display: flex;
+        flex-direction: column; 
+      }
+      .navbar{
+        width: 10%;
+        padding-left: 0%;
+        display: flex;
+        font-size: small;
+      }
+      .gif{
+        display: none;
+      }
+}
+@media (max-width: 430px) {
+    /* Navbar Adjustments */
+    .navbar {
+        flex-direction: column;
+        align-items: right;
+        display: flex;
+        font-size: 12px; /* Smaller font size for text */
+        padding: 2%;
+        width: 384px;
+        background-color: whitesmoke;
+    }
+
+    .navbar .menu {
+        flex-direction: column;
+        gap: 8px; 
+        display: none;
+        background-color: red;
+      }
+
+    .navbar .logo img {
+        height: 25px; /* Smaller logo */
+        
+    }
+
+    .login button {
+        font-size: 14px; /* Slightly larger button text */
+        padding: 8px 12px;
+        display: none;
+    }
+
+    /* Hero Section Adjustments */
+    .hero-container {
+        padding: 15px;
+        
+      
+    }
+
+    .hero-container .hero-text span {
+
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: black;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .hero-text small {
+        font-size: 14px; /* Smaller description text */
+    }
+
+    .book_button button {
+        font-size: 12px;
+        padding: 10px 15px;
+    }
+
+    .gif {
+        display: none; /* Hide GIF for better loading performance */
+    }
+
+    /* Services Section Adjustments */
+    .services-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .service-card {
+        width: 100%; /* Utilize full width */
+    }
+
+    .service-card button {
+        font-size: 14px;
+    }
+
+    /* Stats Section Adjustments */
+    .cards {
+        flex-direction: column;
+    }
+
+    .card {
+        width: 100%;
+        padding: 10px; /* Compact the cards */
+    }
+
+    .card h2 {
+        font-size: 16px;
+    }
+
+    .card .number {
+        font-size: 1.5em; /* Reduce number size */
+    }
+
+    .card p {
+        font-size: 12px; /* Smaller text */
+    }
+
+    /* PAM360 Section Adjustments */
+    .pam360-hero {
+        flex-direction: column;
+    }
+
+    .pam360-hero-left {
+        padding: 10px;
+        text-align: center;
+    }
+
+    .pam360-hero-left h1 {
+        font-size: 24px; /* Smaller headline */
+    }
+
+    .pam360-hero-left p {
+        font-size: 14px;
+    }
+
+    .pam360-cta-btn {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+
+    .pam360-hero-right {
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    /* Subscription Plan Adjustments */
+    .subscription-container {
+        flex-direction: column;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .plan {
+        width: 90%;
+    }
+
+    .plan button {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    /* Footer Adjustments */
+    .footer {
+        text-align: center;
+        font-size: 12px;
+        width: 450px;
+        display:flex;  
+        justify-content: center;
+         align-items: center;
+    }
+}
+  
+  </style>
+  </style>
+</head>
+
+<body>
+  <!-- Navigation Bar -->
+  <div class="navbar">
+    <div class="logo">
+      <img src="logo.png" alt="Logo" />
+    </div>
+    <ul class="menu">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <!-- New link to jump to the Access Privilege section -->
+      <li><a href="#access">Access Privilege</a></li>
+    </ul>
+    <div class="login">
+      <button>Log In</button>
+    </div>
+  </div>
+
+  <!-- Auditor Website - Hero Section -->
+  <div class="hero-container" >
+    <div class="overlay"></div>
+    <div class="hero-text">
+      <div>
+        <span class="solution-text">SOLUTION</span>
+        <small>Your Trusted Partner in Taxation Solutions<br>
+          Expert Guidance for Every GST Concern<br>
+          Simplifying Compliance, Enhancing Confidence
+        </small>
+        <br>
+        <div class="book_button">
+          <button>Book Now &rarr;</button>
+        </div>
+      </div>
+     
+      <div class="gif">
+        <img src="EDIT INSTA REELS_2.gif" alt="front_gif" width="400" height="360">
+      </div>  
+    </div>
+  </div>
+
+  <!-- Auditor Website - Services Section -->
+  <div class="services-section" id="services">
+    <div class="service-card">
+      <img src="gst_filling.jpg" alt="Customs Clearance" />
+      <div class="description">
+        <h2>GST FILLING</h2>
+        <p>treamline your GST compliance with our expert filing solutions. We simplify the process, ensuring that your returns are filed accurately and on time—minimizing errors and maximizing compliance benefits</p>
+        <button>ENQUIRE NOW</button>
+      </div>
+    </div>
+    <div class="service-card">
+      <img src="it_filling.jpg" alt="Air Freight" />
+      <div class="description">
+        <h2>INCOME TAX FILLING</h2>
+        <p>Navigate the complexities of tax season with confidence. Our comprehensive income tax filing service is built to help you maximize deductions, minimize errors, and ensure full compliance with tax laws</p>
+        <button>ENQUIRE NOW</button>
+      </div>
+    </div>
+    <div class="service-card">
+      <img src="org_reg1.jpg" alt="Sea Freight" />
+      <div class="description">
+        <h2>ORG REGISTER</h2>
+        <p>Establish your organization with ease through our comprehensive registration services. From documentation to compliance, we ensure a smooth and hassle-free process</p>
+        <button>ENQUIRE NOW</button>
+      </div>
+    </div>
+    <div class="service-card">
+      <img src="tds1.jpg" alt="Sea Freight" />
+      <div class="description">
+        <h2>TDS</h2>
+        <p>Ensure timely compliance with Tax Deducted at Source (TDS) regulations to avoid penalties. Our services simplify TDS filing and guarantee accurate deductions for a hassle-free process!</p>
+        <button>ENQUIRE NOW</button>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <header class="header">
+      <h1>OUR STATS</h1>
+    </header>
+
+    <section class="cards">
+      <!-- Card 1 -->
+      <div class="card">
+        <h2>CLIENTS IN GST</h2>
+        <div class="number" data-target="200">0</div>
+        <p>70+ Active clients</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card">
+        <h2>CLIENTS IN IT</h2>
+        <div class="number" data-target="200">0</div>
+        <p>140+ Active clients</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card">
+        <h2>ORG REG</h2>
+        <div class="number" data-target="60">0</div>
+        <p>clients</p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="card">
+        <h2>TDS</h2>
+        <div class="number" data-target="200">0</div>
+        <p>clients</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- JavaScript for number loading animations -->
+  <script>
+    const counters = document.querySelectorAll('.number');
+    
+    counters.forEach(counter => {
+      counter.innerText = '0';
+      
+      const updateCounter = () => {
+        const target = +counter.getAttribute('data-target');
+        const current = +counter.innerText;
+        // Adjust increment for smoother or faster animation
+        const increment = target / 200;
+        
+        if (current < target) {
+          counter.innerText = Math.ceil(current + increment);
+          setTimeout(updateCounter, 10);
+        } else {
+          counter.innerText = target;
+        }
+      };
+      
+      updateCounter();
+    });
+  </script>
+
+  <!-- Privileged Access (PAM360) Section -->
+  <section class="pam360-section" id="access">
+    <div class="pam360-hero">
+      <!-- Left side: Headline and CTA -->
+      <div class="pam360-hero-left">
+        <h1>Your journey to simplified taxation begins here</h1>
+        <p>
+            GSTAudit provides comprehensive solutions for all your taxation needs. From managing GST compliance to offering expert guidance on filing and audits, we help businesses enhance financial accuracy, simplify processes, and ensure confidence in every step of the way
+        </p>
+        <button class="pam360-cta-btn">Signup</button>
+      </div>
+      <!-- Right side: Demo Scheduling Form -->
+      <div class="pam360-hero-right">
+        <h2>Schedule a Meeting</h2>
+        <form>
+          <input type="text" placeholder="Name" required>
+          <input type="email" placeholder="Email" required>
+          <input type="tel" placeholder="Phone Number" required>
+          <input type="date" placeholder="Preferred Callback Date">
+          <select required>
+            <option value="">Select Country</option>
+            <option value="India" selected>India</option>
+            <option value="USA">USA</option>
+            <option value="UK">UK</option>
+          </select>
+          <button type="submit">Schedule a Meeting</button>
+        </form>
+        </div>
+        </div>
+        <br>
+        <div class="subscription-container">
+          <div class="features">
+            <h2>GST</h2>
+          </div>
+      
+          <div class="plan selected">
+            <h3>Monthly</h3>
+            <div class="price">₹ 750</div>
+            <button>Select Plan</button>
+          </div>
+      
+          <div class="plan">
+            <h3>3 Months</h3>
+            <div class="price">₹ 2000</div>
+            <button>Select Plan</button>
+          </div>
+          </div>
+          <br><br>
+          <div class="subscription-container">
+            <div class="features">
+              <h2>TDS</h2>
+            </div>
+        
+            <div class="plan selected">
+              <h3>Querterly</h3>
+              <div class="price">₹ 750 / 3 Month</div>
+              <button>Select Plan</button>
+            </div>
+        
+            <div class="plan">
+              <h3>Yearly</h3>
+              <div class="price">₹ 2500 / yr</div>
+              <button>Select Plan</button>
+            </div>
+            
+            </div>
+            <br><br>
+          <div class="subscription-container">
+            <div class="features">
+              <h2>Register</h2>
+            </div>
+        
+            <div class="plan selected">
+              <h3>Company Register</h3>
+              <div class="price">₹ 40000</div>
+              <button>Select Plan</button>
+            </div>
+        
+            <div class="plan">
+              <h3>GST Register</h3>
+              <div class="price">₹ 2500</div>
+              <button>Select Plan</button>
+            </div>
+            
+            </div>
+            <br><br>
+            <div class="subscription-container">
+              <div class="features">
+                <h2>IT</h2>
+              </div>
+          
+              <div class="plan selected">
+                <h3>Individual</h3>
+                <div class="price">₹ 2500 / yr</div>
+                <button>Select Plan</button>
+              </div>
+          
+              <div class="plan">
+                <h3>Partnership</h3>
+                <div class="price">₹ 7500 / yr</div>
+                <button>Select Plan</button>
+              </div>
+  
+              <div class="plan selected">
+                <h3>Tax Audit</h3>
+                <div class="price">₹ 15000 / yr</div>
+                <button>Select Plan</button>
+              </div>
+              
+              </div>
+              <br><br>
+              <footer class="footer" style="background-color: #333; color: #fff; font-family: Arial, sans-serif; padding: 10px 0;">
+                <div style="width: 1600px; margin: 0 auto;margin-top: auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                    <div class="first" flex: 1; text-align: center;">
+                        <h4 style="margin: 0; font-size: 18px;">Quick Links</h4>
+                        <ul style="list-style: none; padding: 0; margin: 10px 0;">
+                            <li><a href="#" style="color: #fff; text-decoration: none;">Home</a></li>
+                            <li><a href="#" style="color: #fff; text-decoration: none;">Services</a></li>
+                            <li><a href="#" style="color: #fff; text-decoration: none;">Gallery</a></li>
+                            <li><a href="#" style="color: #fff; text-decoration: none;">About Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="second" flex: 1; text-align: center; margin-bottom: 10px;">
+                        <h4 style="margin: 0; font-size: 18px;">Contact Us</h4>
+                        <p style="margin: 10px 0;">+91-8888888888<br>Zahoor@kzassociate.com</p>
+                        <p>Main Office: Perimet, Chennai<br>Branch Office: Ambur</p>
+                    </div>
+                    <div class="third" flex: 1; text-align: center;">
+                        <p style="margin: 0;">© 2024 - 2025 GSTAudit Ltd. All Rights Reserved.</p>
+                    </div>
+                </div>
+              </footer>
